@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>秒杀商品的列表页</title>
-    <%@include file="common/tag.jsp" %>
+    <%@include file="../common/tag.jsp" %>
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -36,12 +36,15 @@
                 <!-- Table -->
                 <table class="table table-hover">
                     <thead>
-                        <tr>名称</tr>
-                        <tr>库存</tr>
-                        <tr>开始时间</tr>
-                        <tr>结束时间</tr>
-                        <tr>创建时间</tr>
-                        <tr>详情页</tr>
+                        <tr>
+                            <th>名称</th>
+                            <th>库存</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>创建时间</th>
+                            <th>详情页</th>
+                        </tr>
+
                     </thead>
                     <tbody>
                         <c:forEach var="sk" items="${list}">

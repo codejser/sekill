@@ -49,7 +49,7 @@ public class SeckillController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/{seckillId}/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/{seckillId}/detail",method = RequestMethod.GET)
     public String detail(@PathVariable("seckillId") Long seckillId, Model model){
         if(seckillId == null){
             return "redirect:/seckill/list";
@@ -69,7 +69,7 @@ public class SeckillController {
      */
     @RequestMapping(value = "/{seckillId}/exposer",method = RequestMethod.POST)
     @ResponseBody
-    public SeckillResult<Exposer> exposer(Long seckillId){
+    public SeckillResult<Exposer> exposer(@PathVariable Long seckillId){
         SeckillResult<Exposer> result;
         try {
             Exposer exposer = iSeckillService.exportSeckillUrl(seckillId);
@@ -93,23 +93,25 @@ public class SeckillController {
     public SeckillResult<SeckillExecution> execute(@PathVariable("seckillId")Long seckillId,
                                                    @PathVariable("md5") String md5,
                                                    @CookieValue("killphone") Long phone){
+        SeckillResult<SeckillExecution> result;
         if(phone == null){
-            return new SeckillResult<SeckillExecution>(false,"未注册");
+            result =  new SeckillResult<SeckillExecution>(false,"未注册");
         }
         try{
             SeckillExecution seckillExecution = iSeckillService.executeSeckill(seckillId,phone,md5);
-            return new SeckillResult<SeckillExecution>(true,seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true,seckillExecution);
         }catch (RepeatKillException e){
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExecution>(false,seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true,seckillExecution);
         }catch (SeckillCloseException e){
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillEnum.END);
-            return new SeckillResult<SeckillExecution>(false,seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true,seckillExecution);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillEnum.INNER_ERROR);
-            return new SeckillResult<SeckillExecution>(false,seckillExecution);
+            result = new SeckillResult<SeckillExecution>(true,seckillExecution);
         }
+        return result;
 
     }
 
