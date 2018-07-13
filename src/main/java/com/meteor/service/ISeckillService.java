@@ -58,4 +58,18 @@ public interface ISeckillService {
      */
     SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException,RepeatKillException,SeckillCloseException;
+
+
+    /**
+     * 执行秒杀动作的方法(存储过程)
+     * 参数包括商品的id,秒杀者对应的电话号码以及暴漏秒杀地址后传来的MD5(用来验证)
+     * 返回的类型是封装了成功或者失败信息的Dto类：主要包括状态码和状态信息；然后用构造器去封装
+     *
+     * @param seckillId
+     * @param userPhone
+     * @param md5
+     * @return
+     */
+    SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5)
+            throws SeckillException,RepeatKillException,SeckillCloseException;
 }

@@ -152,6 +152,13 @@
           <version>1.2.1</version>
       </dependency>
 
+      <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+      <dependency>
+          <groupId>redis.clients</groupId>
+          <artifactId>jedis</artifactId>
+          <version>2.7.3</version>
+      </dependency>
+
 
       <dependency>
           <groupId>junit</groupId>
@@ -159,6 +166,45 @@
           <version>4.11</version>
           <scope>test</scope>
     </dependency>
+
+      <!--序列化依赖 -->
+      <!-- https://mvnrepository.com/artifact/com.dyuproject.protostuff/protostuff-core -->
+      <dependency>
+          <groupId>com.dyuproject.protostuff</groupId>
+          <artifactId>protostuff-core</artifactId>
+          <version>1.0.8</version>
+          <scope>test</scope>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/com.dyuproject.protostuff/protostuff-runtime -->
+      <dependency>
+          <groupId>com.dyuproject.protostuff</groupId>
+          <artifactId>protostuff-runtime</artifactId>
+          <version>1.0.8</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.dyuproject.protostuff</groupId>
+          <artifactId>protostuff-runtime</artifactId>
+          <version>RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>com.dyuproject.protostuff</groupId>
+          <artifactId>protostuff-runtime</artifactId>
+          <version>RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>com.dyuproject.protostuff</groupId>
+          <artifactId>protostuff-core</artifactId>
+          <version>RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>commons-collections</groupId>
+          <artifactId>commons-collections</artifactId>
+          <version>3.2.1</version>
+      </dependency>
+
+
   </dependencies>
 
   <build>

@@ -98,7 +98,7 @@ public class SeckillController {
             result =  new SeckillResult<SeckillExecution>(false,"未注册");
         }
         try{
-            SeckillExecution seckillExecution = iSeckillService.executeSeckill(seckillId,phone,md5);
+            SeckillExecution seckillExecution = iSeckillService.executeSeckillProcedure(seckillId,phone,md5);
             result = new SeckillResult<SeckillExecution>(true,seckillExecution);
         }catch (RepeatKillException e){
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillEnum.REPEAT_KILL);
